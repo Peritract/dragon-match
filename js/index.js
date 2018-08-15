@@ -105,8 +105,7 @@ Card = function (_React$Component4) {_inherits(Card, _React$Component4);
 			return React.createElement("div", { className: "card_container", id: this.state.element + "container", onClick: this.handleClick },
 				React.createElement("div", { className: "card", id: this.state.element + "detail" },
 					React.createElement("div", { className: "card_front card_side card_hidden", id: this.state.element + "front" },
-						React.createElement("object", { className: "card_image", data: this.props.image, type: "image/svg+xml" },
-							React.createElement("img", { src: "yourfallback.jpg" }))),
+						React.createElement("object", { className: "card_image", data: this.props.image, type: "image/svg+xml" };
 
 
 					React.createElement("div", { className: "card-back card_side", id: this.state.element + "back" },
