@@ -3,7 +3,7 @@ var _createClass = function () {function defineProperties(target, props) {for (v
 	this.value = value;
 	this.flipped = false;
 	this.matched = false;
-	this.image = "https://raw.githubusercontent.com/Peritract/dragon-match/master/assets/dragons-svg/dragon-" + value % 30 + ".svg";
+	this.image = "/assets/dragons-svg/dragon-" + value % 30 + ".svg";
 	this.back = "https://raw.githubusercontent.com/Peritract/matching-game/master/assets/rune.png";
 }var
 
