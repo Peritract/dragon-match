@@ -1,0 +1,74 @@
+@font-face {
+    font-family: RunyTunesRevisitedNF;
+    src: url("https://raw.githubusercontent.com/Peritract/matching-game/master/assets/RunyTunesRevisitedNF.ttf") /* TTF file for CSS3 browsers */
+		font-weight: 100;
+    font-style: normal;
+}
+
+body {
+	font-family: RunyTunesRevisitedNF, Fallback, sans-serif;
+	--card-back: #a2c7bf;
+	--card-matched: #98b4b2;
+	--card-table: #f1f1f2;
+	--card-face: #f0e6bd;
+	--background: #1995ad;
+	--border: #093837;
+}
+
+.card_table {
+	display: flex;
+	flex-wrap: wrap-reverse;
+	justify-content: space-evenly;
+	background: var(--card-table);
+}
+
+.card_container {
+	perspective: 1000px;
+}
+
+.card {
+	transition: 0.5s;
+	position: relative;
+	transform-style: preserve-3d;
+	padding: 2px;
+	margin: 2px;
+	border-radius: 5%;
+}
+
+.card_front {
+	transform: rotateY(180deg);
+	background: var(--card-face);
+}
+
+.card-back {
+	background: var(--card-back);
+}
+
+.card_image {
+	width: 64px;
+	height: 64px;
+}
+
+.card_hidden {
+	display: none;
+}
+
+.card_turn {
+	transform: rotateY(180deg);
+}
+
+.splash_container {
+	
+}
+
+.splash_message {
+	
+}
+
+.splash_button {
+	
+}
+
+.splash{
+	
+}
