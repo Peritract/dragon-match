@@ -3,7 +3,7 @@ var _createClass = function () {function defineProperties(target, props) {for (v
 	this.value = value;
 	this.flipped = false;
 	this.matched = false;
-	this.image = "https://raw.githubusercontent.com/Peritract/matching-game/master/assets/dragons/dragon-" + value % 30 + ".png";
+	this.image = "https://raw.githubusercontent.com/Peritract/dragon-match/master/assets/dragons-svg/dragon-" + value % 30 + ".svg";
 	this.back = "https://raw.githubusercontent.com/Peritract/matching-game/master/assets/rune.png";
 }var
 
@@ -105,7 +105,9 @@ Card = function (_React$Component4) {_inherits(Card, _React$Component4);
 			return React.createElement("div", { className: "card_container", id: this.state.element + "container", onClick: this.handleClick },
 				React.createElement("div", { className: "card", id: this.state.element + "detail" },
 					React.createElement("div", { className: "card_front card_side card_hidden", id: this.state.element + "front" },
-						React.createElement("img", { className: "card_image", src: this.props.image })),
+						React.createElement("object", { className: "card_image", data: this.props.image, type: "image/svg+xml" },
+							React.createElement("img", { src: "yourfallback.jpg" }))),
+
 
 					React.createElement("div", { className: "card-back card_side", id: this.state.element + "back" },
 						React.createElement("img", { className: "card_image", src: this.props.back }))));
