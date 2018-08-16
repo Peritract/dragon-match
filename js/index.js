@@ -157,8 +157,8 @@ class Card extends React.Component {
 		this.flipOver = this.flipOver.bind(this);
 		this.selectColour = this.selectColour.bind(this);
 		this.state = {
-			element: "card-" + this.props.index + "-",
-			colourClass: "card-" + this.selectColour()
+			element: "card_" + this.props.index + "_",
+			colourClass: "card_" + this.selectColour()
 		};
 	}
 
