@@ -3,7 +3,7 @@ function CardStruct(value){
 	this.value = value;
 	this.flipped = false;
 	this.matched = false;
-	this.image = "./assets/dragons/dragon-" + value + ".svg";
+	this.image = "./assets/dragons-svg/dragon-" + value + ".svg";
 }
 
 class Splash extends React.Component{
