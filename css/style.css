@@ -89,7 +89,7 @@ body {
 	transform: rotateY(180deg);
 }
 
-.icon_black {
+.card_black {
 	fill: black;
 }
 
@@ -97,19 +97,19 @@ body {
 	fill: red;
 }
 
-.icon_blue {
+.card_blue {
 	fill: blue;
 }
 
-.icon_green {
+.card_green {
 	fill: green;
 }
 
-.icon_purple {
+.card_purple {
 	fill: purple;
 }
 
-.icon_white {
+.card_white {
 	fill: white;
 }
 
