@@ -20,12 +20,15 @@ body {
 	font-family: "Runy Tunes Revisited NF", serif;
 	--card-back: #a2c7bf;
 	--card-matched: #98b4b2;
-	--card-table: #f1f1f2;
+	--dark: #1995ad;
 	--card-face: #f0e6bd;
-	--background: #1995ad;
+	--background: #f1f1f2;
 	--border: #093837;
 	--grid-rows: 1;
-	--grid-columns: ;
+	--grid-columns: 1;
+	padding: 0%;
+	margin: 0%;
+	background: var(--dark);
 }
 
 .card_table {
@@ -35,6 +38,12 @@ body {
 	grid-template-columns: repeat(var(--grid-columns), 68px);
 	align-content: center;
 	justify-content: center;
+	background: var(--background);
+	padding: 3%;
+	width: 100%;
+	border: 2px solid var(--border);
+	margin: 1%;
+	border-radius: 10%;
 }
 
 .card_container {
@@ -50,13 +59,15 @@ body {
 	transition: 0.5s;
 	position: relative;
 	transform-style: preserve-3d;
-	border-radius: 5%;
 }
 
 .card_side {
+	border-radius: 10%;
 	width: 68px;
 	height: 68px;
 	text-align: center;
+	padding: 7px 0px 0px 0px;
+	box-shadow: 0.1rem 0.1rem 0.1rem 0.2rem rgba(0, 0, 0, 0.5);
 }
 
 .card_click {
@@ -79,6 +90,7 @@ body {
 .image {
 	width: 64px;
 	height: 64px;
+	margin: auto;
 }
 
 .card_hidden {
@@ -89,23 +101,23 @@ body {
 	transform: rotateY(180deg);
 }
 
-.icon_black {
+.card_black {
 	fill: black;
 }
 
-.icon_red {
+.card_red {
 	fill: red;
 }
 
-.icon_blue {
+.card_blue {
 	fill: blue;
 }
 
-.icon_green {
+.card_green {
 	fill: green;
 }
 
-.icon_purple {
+.card_purple {
 	fill: purple;
 }
 
@@ -113,21 +125,32 @@ body {
 	fill: white;
 }
 
+.ui_container {
+	display: flex;
+	margin: 1%;
+}
+
+.ui_element {
+	border: 2px solid var(--border);
+	margin: 1%;
+	text-align: center;
+	width: 98%;
+	background: var(--background);
+	border-radius: 10%;
+}
 
 .splash_container {
-	
-}
-
-.splash_message {
-	
-}
-
-.splash_button {
-	
-}
-
-.splash{
-	
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	display: flex;
+	justify-content: space-evenly;
+	align-content: center;
+	flex-direction: column;
+	background: var(--dark);
+	padding: 1%;
 }
 
 .button{
@@ -135,5 +158,12 @@ body {
 }
 
 .button:hover {
-	
+	color: var(--background);
+	background: var(--dark);
+	box-shadow: 0.1rem 0.1rem 0.1rem 0.2rem rgba(0, 0, 0, 0.5);
+	border: 4px solid var(--background);
+}
+
+p {
+	font-size: 0.75em;
 }

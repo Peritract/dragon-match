@@ -45,7 +45,7 @@ class Splash extends React.Component {
 	render() {
 		if (this.props.visible) {
 			let message = "";
-			let details = ["Time left: " + Math.floor(this.props.time / 60) + " minutes, " + this.props.time % 60 + " seconds", "Cards in deck: " + this.props.deck];
+			let timing = ["Time left: " + Math.floor(this.props.time / 60) + " minutes, " + this.props.time % 60 + " seconds", "Cards in deck: " + this.props.deck];
 			if (this.props.win) {
 				message = "VICTORY!";
 			} else {
@@ -59,7 +59,7 @@ class Splash extends React.Component {
 					{ className: "splash" },
 					React.createElement(
 						"div",
-						{ className: "splash_message" },
+						{ className: "ui_element" },
 						React.createElement(
 							"h1",
 							null,
@@ -68,18 +68,18 @@ class Splash extends React.Component {
 					),
 					React.createElement(
 						"div",
-						{ className: "splash_message" },
+						{ className: "ui_element" },
 						React.createElement(
 							"h2",
 							null,
-							details[0],
+							timing[0],
 							React.createElement("br", null),
-							details[1]
+							timing[1]
 						)
 					),
 					React.createElement(
 						"div",
-						{ className: "splash_button button", onClick: this.handleClick },
+						{ className: "ui_element button", onClick: this.handleClick },
 						React.createElement(
 							"h2",
 							null,
@@ -116,7 +116,7 @@ class Timer extends React.Component {
 	render() {
 		return React.createElement(
 			"div",
-			{ className: "ui-element" },
+			{ className: "ui_element" },
 			React.createElement(
 				"h2",
 				null,
@@ -139,7 +139,7 @@ class Reset extends React.Component {
 	render() {
 		return React.createElement(
 			"div",
-			{ className: "ui-element button", onClick: this.handleClick },
+			{ className: "ui_element button", onClick: this.handleClick },
 			React.createElement(
 				"h2",
 				null,
@@ -216,7 +216,7 @@ class DragonMatch extends React.Component {
 		this.setupGrid = this.setupGrid.bind(this);
 
 		this.state = {
-			deck: this.shuffle(this.newDeck(67)),
+			deck: this.shuffle(this.newDeck(4)),
 			cardsShown: 0,
 			lastCard: null,
 			time: 150,
@@ -224,7 +224,8 @@ class DragonMatch extends React.Component {
 			gamesWon: 0,
 			clear: false,
 			win: false,
-			bannerVisible: false
+			splashVisible: false,
+			gamesLost: 0
 		};
 	}
 
@@ -255,6 +256,7 @@ class DragonMatch extends React.Component {
 	}
 
 	flipCard(index, flipOver) {
+		document.querySelector("#card_sound").play();
 		this.setState({ cardsShown: this.state.cardsShown + 1 });
 		this.state.deck[index].flipped = true;
 		setTimeout(() => {
@@ -272,6 +274,7 @@ class DragonMatch extends React.Component {
 				this.state.deck[index].flipped = false;
 				this.state.lastCard[1]();
 				flipOver();
+				document.querySelector("#card_sound").play();
 				this.setState({ lastCard: null, cardsShown: 0 });
 			}
 		}, 1000);
@@ -307,7 +310,7 @@ class DragonMatch extends React.Component {
 		if (levelUp) {
 			if (num < 59) num += 4;
 		}
-		this.setState({ deck: this.shuffle(this.newDeck(num)), playing: true, time: time, clear: true, cardsShown: 0, win: false, bannerVisible: false });
+		this.setState({ deck: this.shuffle(this.newDeck(num)), playing: true, time: time, clear: true, cardsShown: 0, win: false, splashVisible: false });
 	}
 
 	endCheck() {
@@ -318,9 +321,9 @@ class DragonMatch extends React.Component {
 			}
 		}
 		if (win) {
-			this.setState({ gamesWon: this.state.gamesWon + 1, playing: false, win: true, bannerVisible: true });
+			this.setState({ gamesWon: this.state.gamesWon + 1, playing: false, win: true, splashVisible: true });
 		} else if (this.state.time < 1) {
-			this.setState({ playing: false, win: false, bannerVisible: true });
+			this.setState({ playing: false, gamesLost: this.state.gamesLost + 1, win: false, splashVisible: true });
 		}
 	}
 
@@ -347,13 +350,67 @@ class DragonMatch extends React.Component {
 			"div",
 			{ className: "game" },
 			React.createElement(
-				"div",
-				{ className: "card_table" },
-				this.renderCards(this.state.deck)
+				"audio",
+				{ id: "card_sound" },
+				React.createElement("source", { src: "./assets/other/flipcard.wav", type: "audio/wav" })
 			),
-			React.createElement(Reset, { reset: this.reset }),
-			React.createElement(Timer, { time: this.state.time, tick: this.tick }),
-			React.createElement(Splash, { win: this.state.win, visible: this.state.bannerVisible, time: this.state.time, deck: this.state.deck.length, reset: this.reset })
+			React.createElement(
+				"div",
+				{ className: "ui_container" },
+				React.createElement(
+					"div",
+					{ className: "ui_element" },
+					React.createElement(
+						"h1",
+						null,
+						"DRAGON MATCH"
+					)
+				)
+			),
+			React.createElement(
+				"div",
+				{ className: "ui_container" },
+				React.createElement(
+					"div",
+					{ className: "card_table" },
+					this.renderCards(this.state.deck)
+				)
+			),
+			React.createElement(
+				"div",
+				{ className: "ui_container" },
+				React.createElement(Reset, { reset: this.reset }),
+				React.createElement(Timer, { time: this.state.time, tick: this.tick }),
+				React.createElement(
+					"div",
+					{ className: "ui_element" },
+					React.createElement(
+						"p",
+						null,
+						"Made by ",
+						React.createElement(
+							"a",
+							{ href: "https://peritract.github.io", target: "blank" },
+							"Peritract"
+						),
+						React.createElement("br", null),
+						"Icons made by ",
+						React.createElement(
+							"a",
+							{ href: "https://www.flaticon.com/authors/freepik" },
+							"Freepik"
+						),
+						" from ",
+						React.createElement(
+							"a",
+							{ href: "https://www.flaticon.com" },
+							"FlatIcon"
+						),
+						"."
+					)
+				)
+			),
+			React.createElement(Splash, { win: this.state.win, visible: this.state.splashVisible, time: this.state.time, deck: this.state.deck.length, reset: this.reset, gamesWon: this.state.gamesWon, gamesLost: this.state.gamesLost })
 		);
 	}
 }
