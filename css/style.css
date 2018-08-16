@@ -24,17 +24,20 @@ body {
 	--card-face: #f0e6bd;
 	--background: #1995ad;
 	--border: #093837;
+	--grid-rows: 1;
+	--grid-columns: ;
 }
 
 .card_table {
-	display: flex;
-	flex-wrap: wrap-reverse;
-	justify-content: space-evenly;
-	background: var(--card-table);
+	display: grid;
+	grid-gap: 1rem;
+	grid-template-rows: repeat(var(--grid-rows), 64px);
+	grid-template-columns: repeat(var(--grid-columns), 64px);
 }
 
 .card_container {
 	perspective: 1000px;
+	transform-style: preserve-3d;
 }
 
 .card {
@@ -61,10 +64,12 @@ body {
 .card_front {
 	transform: rotateY(180deg);
 	background: var(--card-face);
+	backface-visibility: hidden;
 }
 
 .card-back {
 	background: var(--card-back);
+	backface-visibility: hidden;
 }
 
 .image {
@@ -98,6 +103,10 @@ body {
 
 .icon_purple path {
 	fill: purple;
+}
+
+.icon_white path {
+	fill: white;
 }
 
 
