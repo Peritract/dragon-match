@@ -235,7 +235,6 @@ class DragonMatch extends React.Component {
 			this.state.deck[index].flipped = false;
 			this.state.lastCard[1]();
 			flipOver();
-			document.querySelector("#card_sound").play();
 			this.setState({lastCard: null, cardsShown: 0})
 		}
 		},1000)
