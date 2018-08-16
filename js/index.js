@@ -158,7 +158,7 @@ class Card extends React.Component {
 		this.selectColour = this.selectColour.bind(this);
 		this.state = {
 			element: "card-" + this.props.index + "-",
-			colourClass: "card-" + this.selectColour
+			colourClass: "card-" + this.selectColour()
 		};
 	}
 
@@ -213,9 +213,10 @@ class DragonMatch extends React.Component {
 		this.tick = this.tick.bind(this);
 		this.endCheck = this.endCheck.bind(this);
 		this.reset = this.reset.bind(this);
+		this.setupGrid = this.setupGrid.bind(this);
 
 		this.state = {
-			deck: this.shuffle(this.newDeck(2)),
+			deck: this.shuffle(this.newDeck(67)),
 			cardsShown: 0,
 			lastCard: null,
 			time: 150,
@@ -225,6 +226,26 @@ class DragonMatch extends React.Component {
 			win: false,
 			bannerVisible: false
 		};
+	}
+
+	setupGrid() {
+		let num = this.state.deck.length;
+		let columns;
+		if (num < 5) {
+			columns = 2;
+		} else if (num < 17) {
+			columns = 4;
+		} else if (num < 37) {
+			columns = 6;
+		} else if (num < 65) {
+			columns = 8;
+		} else {
+			columns = 10;
+		}
+		let rows = Math.ceil(num / columns);
+
+		document.body.style.setProperty('--grid-rows', rows);
+		document.body.style.setProperty('--grid-columns', columns);
 	}
 
 	renderCards(deck) {
@@ -284,7 +305,7 @@ class DragonMatch extends React.Component {
 		let num = this.state.deck.length;
 		let time = 150;
 		if (levelUp) {
-			if (num < 59) num += 2;
+			if (num < 59) num += 4;
 		}
 		this.setState({ deck: this.shuffle(this.newDeck(num)), playing: true, time: time, clear: true, cardsShown: 0, win: false, bannerVisible: false });
 	}
@@ -312,6 +333,7 @@ class DragonMatch extends React.Component {
 	}
 
 	render() {
+		this.setupGrid();
 		if (this.state.clear) {
 			this.setState({ clear: false });
 			return React.createElement(
