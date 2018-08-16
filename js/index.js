@@ -3,7 +3,8 @@ var _createClass = function () {function defineProperties(target, props) {for (v
 	this.value = value;
 	this.flipped = false;
 	this.matched = false;
-	this.image = "./assets/dragons/dragon-" + value + ".svg";
+	this.image = "./assets/dragons/dragon-" + value % 30 + ".svg";
+  
 }var
 
 Splash = function (_React$Component) {_inherits(Splash, _React$Component);
@@ -106,6 +107,7 @@ Card = function (_React$Component4) {_inherits(Card, _React$Component4);
 					React.createElement("div", { className: "card_front card_side card_hidden", id: this.state.element + "front" },
 						React.createElement("div", { className: "card_click", onClick: this.handleClick }),
 						React.createElement("object", { type: "image/svg+xml", className: "image", data: this.props.image })),
+
 
 					React.createElement("div", { className: "card-back card_side", id: this.state.element + "back" },
 						React.createElement("div", { className: "card_click", onClick: this.handleClick }),
