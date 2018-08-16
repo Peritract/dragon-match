@@ -163,7 +163,7 @@ class Card extends React.Component {
 	}
 
 	selectColour() {
-		return ["black", "red", "green", "blue", "purple"][this.props.value / 5];
+		return ["black", "red", "green", "blue", "purple"][this.props.value % 5];
 	}
 
 	flipOver() {
