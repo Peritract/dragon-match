@@ -85,27 +85,27 @@ body {
 	transform: rotateY(180deg);
 }
 
-.icon_black path {
+.icon_black {
 	fill: black;
 }
 
-.icon_red path {
+.icon_red {
 	fill: red;
 }
 
-.icon_blue path {
+.icon_blue {
 	fill: blue;
 }
 
-.icon_green path {
+.icon_green {
 	fill: green;
 }
 
-.icon_purple path {
+.icon_purple {
 	fill: purple;
 }
 
-.icon_white path {
+.icon_white {
 	fill: white;
 }
 
