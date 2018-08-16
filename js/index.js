@@ -3,8 +3,7 @@ var _createClass = function () {function defineProperties(target, props) {for (v
 	this.value = value;
 	this.flipped = false;
 	this.matched = false;
-	this.image = "https://raw.githubusercontent.com/Peritract/dragon-match/master/assets/dragons-svg/dragon-" + value % 30 + ".svg";
-	this.back = "https://raw.githubusercontent.com/Peritract/matching-game/master/assets/rune.png";
+	this.image = "./assets/dragons/dragon-" + value + ".svg";
 }var
 
 Splash = function (_React$Component) {_inherits(Splash, _React$Component);
@@ -102,15 +101,15 @@ Card = function (_React$Component4) {_inherits(Card, _React$Component4);
 		} }, { key: "render", value: function render()
 
 		{
-			return React.createElement("div", { className: "card_container", id: this.state.element + "container", onClick: this.handleClick },
+			return React.createElement("div", { className: "card_container", id: this.state.element + "container" },
 				React.createElement("div", { className: "card", id: this.state.element + "detail" },
 					React.createElement("div", { className: "card_front card_side card_hidden", id: this.state.element + "front" },
-						React.createElement("object", { className: "card_image", data: this.props.image, type: "image/svg+xml" },
-							React.createElement("img", { src: "yourfallback.jpg" }))),
-
+						React.createElement("div", { className: "card_click", onClick: this.handleClick }),
+						React.createElement("object", { type: "image/svg+xml", className: "image", data: this.props.image })),
 
 					React.createElement("div", { className: "card-back card_side", id: this.state.element + "back" },
-						React.createElement("img", { className: "card_image", src: this.props.back }))));
+						React.createElement("div", { className: "card_click", onClick: this.handleClick }),
+						React.createElement("object", { type: "image/svg+xml", className: "image", data: "https://rawgit.com/Peritract/dragon-match/master/assets/dragons-svg/dragon-2.svg" }))));
 
 
 
@@ -129,7 +128,7 @@ DragonMatch = function (_React$Component5) {_inherits(DragonMatch, _React$Compon
 		_this6.reset = _this6.reset.bind(_this6);
 
 		_this6.state = {
-			deck: _this6.shuffle(_this6.newDeck(4)),
+			deck: _this6.shuffle(_this6.newDeck(2)),
 			cardsShown: 0,
 			lastCard: null,
 			time: 150,
@@ -143,7 +142,7 @@ DragonMatch = function (_React$Component5) {_inherits(DragonMatch, _React$Compon
 
 		deck) {var _this7 = this;
 			return deck.map(function (card, index) {
-				return React.createElement(Card, { value: card.value, flipped: card.flipped, matched: card.matched, image: card.image, back: card.back, index: index, cardsShown: _this7.state.cardsShown, flipCard: _this7.flipCard });
+				return React.createElement(Card, { value: card.value, flipped: card.flipped, matched: card.matched, image: card.image, index: index, cardsShown: _this7.state.cardsShown, flipCard: _this7.flipCard });
 			});
 		} }, { key: "flipCard", value: function flipCard(
 
@@ -197,7 +196,7 @@ DragonMatch = function (_React$Component5) {_inherits(DragonMatch, _React$Compon
 
 		{var levelUp = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : false;
 			var num = this.state.deck.length;
-			var time = this.state.time;
+			var time = 150;
 			if (levelUp) {
 				if (num < 29) num += 2;
 			}

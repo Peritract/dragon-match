@@ -1,12 +1,25 @@
 @font-face {
-    font-family: RunyTunesRevisitedNF;
-    src: url("https://raw.githubusercontent.com/Peritract/matching-game/master/assets/RunyTunesRevisitedNF.ttf") /* TTF file for CSS3 browsers */
-		font-weight: 100;
+    font-family: 'Runy Tunes Revisited NF';
+    src: url('hinted-RunyTunesRevisitedNF.eot');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Runy Tunes Revisited NF';
+    src: local('RunyTunesRevisitedNF'),  
+		url("../assets/fonts/hinted-RunyTunesRevisitedNF.woff2") format('woff2'),
+        url("../assets/fonts/hinted-RunyTunesRevisitedNF.woff") format('woff'),
+		url('hinted-RunyTunesRevisitedNF.ttf') format('truetype');
+    font-weight: normal;
     font-style: normal;
 }
 
+
+
+
+
 body {
-	font-family: RunyTunesRevisitedNF, Fallback, sans-serif;
+	font-family: "Runy Tunes Revisited NF", serif;
 	--card-back: #a2c7bf;
 	--card-matched: #98b4b2;
 	--card-table: #f1f1f2;
@@ -30,9 +43,21 @@ body {
 	transition: 0.5s;
 	position: relative;
 	transform-style: preserve-3d;
-	padding: 2px;
+	padding: 2%;
 	margin: 2px;
 	border-radius: 5%;
+}
+
+.card_side {
+	width: 68px;
+	height: 68px;
+	text-align: center;
+}
+
+.card_click {
+	position: absolute;
+	width: 100%;
+	height: 100%;
 }
 
 .card_front {
@@ -44,10 +69,15 @@ body {
 	background: var(--card-back);
 }
 
-.card_image {
+.image {
 	width: 64px;
 	height: 64px;
 }
+
+.image {
+	fill: red;
+}
+
 
 .card_hidden {
 	display: none;
@@ -56,6 +86,27 @@ body {
 .card_turn {
 	transform: rotateY(180deg);
 }
+
+.icon_black path {
+	fill: black;
+}
+
+.icon_red path {
+	fill: red;
+}
+
+.icon_blue path {
+	fill: blue;
+}
+
+.icon_green path {
+	fill: green;
+}
+
+.icon_purple path {
+	fill: purple;
+}
+
 
 .splash_container {
 	

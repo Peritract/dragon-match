@@ -3,8 +3,7 @@ function CardStruct(value){
 	this.value = value;
 	this.flipped = false;
 	this.matched = false;
-	this.image = "https://raw.githubusercontent.com/Peritract/matching-game/master/assets/dragons/dragon-" + value % 30 + ".png";
-	this.back = "https://raw.githubusercontent.com/Peritract/matching-game/master/assets/rune.png";
+	this.image = "./assets/dragons/dragon-" + value + ".svg";
 }
 
 class Splash extends React.Component{
@@ -102,13 +101,15 @@ class Card extends React.Component {
 	}
 	
 	render(){
-		return (<div className="card_container" id={this.state.element + "container"} onClick={this.handleClick}>
+		return (<div className="card_container" id={this.state.element + "container"}>
 			<div className="card" id={this.state.element + "detail"}>
 				<div className="card_front card_side card_hidden" id={this.state.element + "front"}>
-					<img className="card_image" src={this.props.image}></img>
+					<div className="card_click" onClick={this.handleClick}></div>
+					<object type="image/svg+xml" className="image" data={this.props.image}></object>
 				</div>
 				<div className="card-back card_side" id={this.state.element + "back"}>
-					<img className="card_image" src={this.props.back}></img>
+					<div className="card_click" onClick={this.handleClick}></div>
+					<object type="image/svg+xml" className="image" data="https://rawgit.com/Peritract/dragon-match/master/assets/dragons-svg/dragon-2.svg"></object>
 				</div>
 			</div>
 		</div>);
@@ -127,7 +128,7 @@ class DragonMatch extends React.Component {
 		this.reset = this.reset.bind(this);
 		
 		this.state = {
-			deck: this.shuffle(this.newDeck(4)),
+			deck: this.shuffle(this.newDeck(2)),
 			cardsShown: 0,
 			lastCard: null,
 			time: 150,
@@ -141,7 +142,7 @@ class DragonMatch extends React.Component {
 	
 	renderCards(deck){
 		return deck.map((card, index) => {
-			return (<Card value={card.value} flipped={card.flipped} matched={card.matched} image={card.image} back={card.back} index={index} cardsShown={this.state.cardsShown} flipCard={this.flipCard}/>)
+			return (<Card value={card.value} flipped={card.flipped} matched={card.matched} image={card.image} index={index} cardsShown={this.state.cardsShown} flipCard={this.flipCard}/>)
 		})
 	}
 	
@@ -195,7 +196,7 @@ class DragonMatch extends React.Component {
 	
 	reset(levelUp=false){
 		let num = this.state.deck.length;
-		let time = this.state.time;
+		let time = 150;
 		if (levelUp){
 			if (num < 29) num += 2;
 		}
