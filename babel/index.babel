@@ -3,7 +3,32 @@ function CardStruct(value){
 	this.value = value;
 	this.flipped = false;
 	this.matched = false;
-	this.image = "./assets/dragons-svg/dragon-" + value + ".svg";
+	this.image = "./assets/dragons-svg/dragon-" + value % 30 + ".svg";
+}
+
+class CardIcon extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {};
+		this.componentDidMount = this.componentDidMount.bind(this)
+  }
+  componentDidMount() {
+		let that = this;
+    fetch(this.props.url).then(function(data){
+			data.text().then(function(svg){
+				that.setState({icon: svg});
+			})
+		})
+  }
+  createInnerHtml() {
+    return {
+      __html: this.state.icon
+    };
+  }
+  render() {
+    return (<div className="image" dangerouslySetInnerHTML={this.createInnerHtml()}>
+            </div>);
+  }
 }
 
 class Splash extends React.Component{
@@ -26,8 +51,8 @@ class Splash extends React.Component{
 			return (<div className="splash_container">
 				<div className="splash">
 					<div className="splash_message"><h1>{message}</h1></div>
-					<div className="splash_message"><h3>{details[0]}<br />{details[1]}</h3></div>
-					<div className="splash_button button" onClick={this.handleClick}><h3>NEW GAME</h3></div>
+					<div className="splash_message"><h2>{details[0]}<br />{details[1]}</h2></div>
+					<div className="splash_button button" onClick={this.handleClick}><h2>NEW GAME</h2></div>
 					</div>
 				</div>)
 		} else
@@ -60,7 +85,7 @@ class Timer extends React.Component {
 	}
 	
 	render(){
-		return (<div className="ui-element"><h3>{Math.floor(this.props.time / 60)}:{("0" + (this.props.time % 60)).slice(-2)}</h3></div>)
+		return (<div className="ui-element"><h2>{Math.floor(this.props.time / 60)}:{("0" + (this.props.time % 60)).slice(-2)}</h2></div>)
 	}
 }
 
@@ -73,7 +98,7 @@ class Reset extends React.Component {
 		this.props.reset();
 	}	
 	render(){
-		return(<div className="ui-element button" onClick={this.handleClick}><h3>RESET</h3></div>)
+		return(<div className="ui-element button" onClick={this.handleClick}><h2>RESET</h2></div>)
 	}
 }
 
@@ -109,7 +134,7 @@ class Card extends React.Component {
 				</div>
 				<div className="card-back card_side" id={this.state.element + "back"}>
 					<div className="card_click" onClick={this.handleClick}></div>
-					<object type="image/svg+xml" className="image" data="https://rawgit.com/Peritract/dragon-match/master/assets/dragons-svg/dragon-2.svg"></object>
+					<CardIcon url="./assets/other-svg/viking-ship.svg" />
 				</div>
 			</div>
 		</div>);
@@ -198,7 +223,7 @@ class DragonMatch extends React.Component {
 		let num = this.state.deck.length;
 		let time = 150;
 		if (levelUp){
-			if (num < 29) num += 2;
+			if (num < 59) num += 2;
 		}
 		this.setState({deck: this.shuffle(this.newDeck(num)), playing: true, time: time, clear: true, cardsShown: 0, win: false, bannerVisible: false})
 	}
