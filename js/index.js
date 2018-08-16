@@ -44,50 +44,91 @@ class Splash extends React.Component {
 	}
 	render() {
 		if (this.props.visible) {
-			let message = "";
-			let timing = ["Time left: " + Math.floor(this.props.time / 60) + " minutes, " + this.props.time % 60 + " seconds", "Cards in deck: " + this.props.deck];
-			if (this.props.win) {
-				message = "VICTORY!";
-			} else {
-				message = "DEFEAT!";
-			}
-			return React.createElement(
-				"div",
-				{ className: "splash_container" },
-				React.createElement(
+			if (this.props.gamesLost === 0 && this.props.gamesWon === 0) {
+				return React.createElement(
 					"div",
-					{ className: "splash" },
+					{ className: "splash_container" },
 					React.createElement(
 						"div",
-						{ className: "ui_element" },
+						{ className: "splash" },
 						React.createElement(
-							"h1",
-							null,
-							message
-						)
-					),
-					React.createElement(
-						"div",
-						{ className: "ui_element" },
+							"div",
+							{ className: "ui_element" },
+							React.createElement(
+								"h1",
+								null,
+								"DRAGON MATCH"
+							)
+						),
 						React.createElement(
-							"h2",
-							null,
-							timing[0],
-							React.createElement("br", null),
-							timing[1]
-						)
-					),
-					React.createElement(
-						"div",
-						{ className: "ui_element button", onClick: this.handleClick },
+							"div",
+							{ className: "ui_element" },
+							React.createElement(
+								"h2",
+								null,
+								"FLIP CARDS; MATCH DRAGONS"
+							)
+						),
 						React.createElement(
-							"h2",
-							null,
-							"NEW GAME"
+							"div",
+							{ className: "ui_element button", onClick: this.handleClick },
+							React.createElement(
+								"h2",
+								null,
+								"START GAME"
+							)
 						)
 					)
-				)
-			);
+				);
+			} else {
+				let message = "";
+				let option = "";
+				let timing = ["Time left: " + Math.floor(this.props.time / 60) + " minutes, " + this.props.time % 60 + " seconds", "Cards in deck: " + this.props.deck];
+				if (this.props.win) {
+					option = "NEXT LEVEL";
+					message = "VICTORY!";
+				} else {
+					option = "RETRY";
+					message = "DEFEAT!";
+				}
+				return React.createElement(
+					"div",
+					{ className: "splash_container" },
+					React.createElement(
+						"div",
+						{ className: "splash" },
+						React.createElement(
+							"div",
+							{ className: "ui_element" },
+							React.createElement(
+								"h1",
+								null,
+								message
+							)
+						),
+						React.createElement(
+							"div",
+							{ className: "ui_element" },
+							React.createElement(
+								"h2",
+								null,
+								timing[0],
+								React.createElement("br", null),
+								timing[1]
+							)
+						),
+						React.createElement(
+							"div",
+							{ className: "ui_element button", onClick: this.handleClick },
+							React.createElement(
+								"h2",
+								null,
+								option
+							)
+						)
+					)
+				);
+			}
 		} else return React.createElement("div", null);
 	}
 }
@@ -220,11 +261,11 @@ class DragonMatch extends React.Component {
 			cardsShown: 0,
 			lastCard: null,
 			time: 150,
-			playing: true,
+			playing: false,
 			gamesWon: 0,
 			clear: false,
 			win: false,
-			splashVisible: false,
+			splashVisible: true,
 			gamesLost: 0
 		};
 	}
@@ -256,7 +297,6 @@ class DragonMatch extends React.Component {
 	}
 
 	flipCard(index, flipOver) {
-		document.querySelector("#card_sound").play();
 		this.setState({ cardsShown: this.state.cardsShown + 1 });
 		this.state.deck[index].flipped = true;
 		setTimeout(() => {
@@ -350,11 +390,6 @@ class DragonMatch extends React.Component {
 			"div",
 			{ className: "game" },
 			React.createElement(
-				"audio",
-				{ id: "card_sound" },
-				React.createElement("source", { src: "./assets/other/flipcard.wav", type: "audio/wav" })
-			),
-			React.createElement(
 				"div",
 				{ className: "ui_container" },
 				React.createElement(
@@ -405,8 +440,7 @@ class DragonMatch extends React.Component {
 							"a",
 							{ href: "https://www.flaticon.com" },
 							"FlatIcon"
-						),
-						"."
+						)
 					)
 				)
 			),
