@@ -31,21 +31,25 @@ body {
 .card_table {
 	display: grid;
 	grid-gap: 1rem;
-	grid-template-rows: repeat(var(--grid-rows), 64px);
-	grid-template-columns: repeat(var(--grid-columns), 64px);
+	grid-template-rows: repeat(var(--grid-rows), 68px);
+	grid-template-columns: repeat(var(--grid-columns), 68px);
+	align-content: center;
+	justify-content: center;
 }
 
 .card_container {
+	width: 68px;
+	height: 68px;
 	perspective: 1000px;
 	transform-style: preserve-3d;
 }
 
 .card {
+	width: 68px;
+	height: 68px;
 	transition: 0.5s;
 	position: relative;
 	transform-style: preserve-3d;
-	padding: 2%;
-	margin: 2%;
 	border-radius: 5%;
 }
 
