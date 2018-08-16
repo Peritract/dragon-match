@@ -41,7 +41,7 @@ body {
 	background: var(--background);
 	padding: 3%;
 	width: 100%;
-	border: 2px solid var(--border);
+	border: 4px solid var(--border);
 	margin: 1%;
 	border-radius: 10%;
 }
@@ -121,7 +121,7 @@ body {
 	fill: purple;
 }
 
-.card_white {
+.icon_white {
 	fill: white;
 }
 
@@ -131,7 +131,7 @@ body {
 }
 
 .ui_element {
-	border: 2px solid var(--border);
+	border: 4px solid var(--border);
 	margin: 1%;
 	text-align: center;
 	width: 98%;
