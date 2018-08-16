@@ -1,0 +1,25 @@
+{
+  "name": "dragon-match",
+  "version": "1.0.0",
+  "description": "A match-pairs card game made with React",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "babel babel/index.babel --out-file js/index.js --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Peritract/dragon-match.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Peritract/dragon-match/issues"
+  },
+  "homepage": "https://github.com/Peritract/dragon-match#readme",
+  "devDependencies": {
+    "babel": "^6.23.0",
+    "babel-cli": "^6.26.0",
+    "babel-preset-react": "^6.24.1"
+  }
+}
