@@ -45,20 +45,33 @@ class Splash extends React.Component{
 	}
 	render (){
 		if (this.props.visible){
-			let message ="";
-			let timing = ["Time left: " + Math.floor(this.props.time / 60) + " minutes, " + this.props.time % 60 + " seconds", "Cards in deck: " + this.props.deck]
-			if (this.props.win){
-				message = "VICTORY!"
+			if (this.props.gamesLost === 0 && this.props.gamesWon === 0){
+				return (<div className="splash_container">
+					<div className="splash">
+						<div className="ui_element"><h1>DRAGON MATCH</h1></div>
+						<div className="ui_element"><h2>FLIP CARDS; MATCH DRAGONS</h2></div>
+						<div className="ui_element button" onClick={this.handleClick}><h2>START GAME</h2></div>
+						</div>
+					</div>)
 			} else {
-				message = "DEFEAT!"
+				let message ="";
+				let option = "";
+				let timing = ["Time left: " + Math.floor(this.props.time / 60) + " minutes, " + this.props.time % 60 + " seconds", "Cards in deck: " + this.props.deck]
+				if (this.props.win){
+					option = "NEXT LEVEL";
+					message = "VICTORY!";
+				} else {
+					option = "RETRY";
+					message = "DEFEAT!"
+				}
+				return (<div className="splash_container">
+					<div className="splash">
+						<div className="ui_element"><h1>{message}</h1></div>
+						<div className="ui_element"><h2>{timing[0]}<br />{timing[1]}</h2></div>
+						<div className="ui_element button" onClick={this.handleClick}><h2>{option}</h2></div>
+						</div>
+					</div>)
 			}
-			return (<div className="splash_container">
-				<div className="splash">
-					<div className="ui_element"><h1>{message}</h1></div>
-					<div className="ui_element"><h2>{timing[0]}<br />{timing[1]}</h2></div>
-					<div className="ui_element button" onClick={this.handleClick}><h2>NEW GAME</h2></div>
-					</div>
-				</div>)
 		} else
 		return (<div></div>)
 	}
@@ -169,11 +182,11 @@ class DragonMatch extends React.Component {
 			cardsShown: 0,
 			lastCard: null,
 			time: 150,
-			playing: true,
+			playing: false,
 			gamesWon: 0,
 			clear: false,
 			win: false,
-			splashVisible: false,
+			splashVisible: true,
 			gamesLost: 0
 		};
 	}
@@ -205,7 +218,6 @@ class DragonMatch extends React.Component {
 	}
 	
 	flipCard(index, flipOver){
-		document.querySelector("#card_sound").play();
 		this.setState({cardsShown: this.state.cardsShown + 1})
 		this.state.deck[index].flipped = true;
 		setTimeout(()=>{
@@ -296,9 +308,6 @@ class DragonMatch extends React.Component {
 					</div>)
 		}
 		return (<div className="game">
-				<audio id="card_sound">
-					<source src="./assets/other/flipcard.wav" type="audio/wav" />
-				</audio>
 				<div className="ui_container"><div className="ui_element"><h1>DRAGON MATCH</h1></div></div>
 				<div className="ui_container">
 				<div className="card_table">
@@ -311,7 +320,7 @@ class DragonMatch extends React.Component {
 				<div className="ui_element">
 				<p>
 				Made by <a href="https://peritract.github.io" target="blank">Peritract</a><br/>
-		Icons made by <a href="https://www.flaticon.com/authors/freepik">Freepik</a> from <a href="https://www.flaticon.com">FlatIcon</a>.
+		Icons made by <a href="https://www.flaticon.com/authors/freepik">Freepik</a> from <a href="https://www.flaticon.com">FlatIcon</a>
 		</p>
 				</div>
 				</div>
