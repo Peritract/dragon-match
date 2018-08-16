@@ -14,11 +14,9 @@
     font-style: normal;
 }
 
-
-
-
-
 body {
+	font-size: 2em;
+	letter-spacing: 0.2em;
 	font-family: "Runy Tunes Revisited NF", serif;
 	--card-back: #a2c7bf;
 	--card-matched: #98b4b2;
@@ -44,7 +42,7 @@ body {
 	position: relative;
 	transform-style: preserve-3d;
 	padding: 2%;
-	margin: 2px;
+	margin: 2%;
 	border-radius: 5%;
 }
 
@@ -73,11 +71,6 @@ body {
 	width: 64px;
 	height: 64px;
 }
-
-.image {
-	fill: red;
-}
-
 
 .card_hidden {
 	display: none;
@@ -121,5 +114,13 @@ body {
 }
 
 .splash{
+	
+}
+
+.button{
+	cursor: pointer;
+}
+
+.button:hover {
 	
 }
