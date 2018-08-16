@@ -26,7 +26,11 @@ class CardIcon extends React.Component {
 		};
 	}
 	render() {
-		return React.createElement("div", { className: "image", dangerouslySetInnerHTML: this.createInnerHtml() });
+		let classes = "image";
+		if (this.props.classes) {
+			classes = classes + " " + this.props.classes;
+		}
+		return React.createElement("div", { className: classes, dangerouslySetInnerHTML: this.createInnerHtml() });
 	}
 }
 
@@ -151,10 +155,17 @@ class Card extends React.Component {
 
 		this.handleClick = this.handleClick.bind(this);
 		this.flipOver = this.flipOver.bind(this);
+		this.selectColour = this.selectColour.bind(this);
 		this.state = {
-			element: "card-" + this.props.index + "-"
+			element: "card-" + this.props.index + "-",
+			colourClass: "card-" + this.selectColour
 		};
 	}
+
+	selectColour() {
+		return ["black", "red", "green", "blue", "purple"][this.props.value / 5];
+	}
+
 	flipOver() {
 		document.querySelector("#" + this.state.element + "detail").classList.toggle("card_turn");
 		document.querySelector("#" + this.state.element + "front").classList.toggle("card_hidden");
@@ -179,7 +190,7 @@ class Card extends React.Component {
 					"div",
 					{ className: "card_front card_side card_hidden", id: this.state.element + "front" },
 					React.createElement("div", { className: "card_click", onClick: this.handleClick }),
-					React.createElement("object", { type: "image/svg+xml", className: "image", data: this.props.image })
+					React.createElement(CardIcon, { url: this.props.image, classes: this.state.colourClass })
 				),
 				React.createElement(
 					"div",
