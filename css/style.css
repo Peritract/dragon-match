@@ -121,7 +121,7 @@ body {
 	fill: purple;
 }
 
-.icon_white {
+.card_white {
 	fill: white;
 }
 
@@ -134,9 +134,10 @@ body {
 	border: 4px solid var(--border);
 	margin: 1%;
 	text-align: center;
-	width: 98%;
+	width: 97%;
 	background: var(--background);
 	border-radius: 10%;
+	margin: 1%;
 }
 
 .splash_container {
