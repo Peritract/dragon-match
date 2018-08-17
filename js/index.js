@@ -155,6 +155,19 @@ class Timer extends React.Component {
 	}
 
 	render() {
+		if (this.props.time < 15) {
+			return React.createElement(
+				"div",
+				{ className: "ui_element warning" },
+				React.createElement(
+					"h2",
+					null,
+					Math.floor(this.props.time / 60),
+					":",
+					("0" + this.props.time % 60).slice(-2)
+				)
+			);
+		}
 		return React.createElement(
 			"div",
 			{ className: "ui_element" },
@@ -312,7 +325,7 @@ class DragonMatch extends React.Component {
 				this.state.deck[this.state.lastCard[0]].flipped = true;
 				this.state.deck[index].flipped = true;
 				this.setState({ lastCard: null, cardsShown: 0 });
-				setTimeout(this.endCheck(), 1000);
+				this.endCheck();
 			} else {
 				this.state.deck[this.state.lastCard[0]].flipped = false;
 				this.state.deck[index].flipped = false;
@@ -364,9 +377,9 @@ class DragonMatch extends React.Component {
 			}
 		}
 		if (win) {
-			this.setState({ gamesWon: this.state.gamesWon + 1, playing: false, win: true, splashVisible: true });
+			setTimeout(this.setState({ gamesWon: this.state.gamesWon + 1, playing: false, win: true, splashVisible: true }), 1000);
 		} else if (this.state.time < 1) {
-			this.setState({ playing: false, gamesLost: this.state.gamesLost + 1, win: false, splashVisible: true });
+			setTimeout(this.setState({ playing: false, gamesLost: this.state.gamesLost + 1, win: false, splashVisible: true }), 1000);
 		}
 	}
 
