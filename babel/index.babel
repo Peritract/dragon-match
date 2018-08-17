@@ -128,12 +128,15 @@ class Card extends React.Component {
 		this.selectColour = this.selectColour.bind(this);
 		this.state = {
 			element: "card_" + this.props.index + "_",
-			colourClass: "card_" + this.selectColour()
 		}
 	}
 	
 	selectColour(){
+	if (this.props.matched){
+		return("white")
+	} else {
 		return ["black", "red","green","blue", "purple"][this.props.value % 5];
+	}
 	}
 	
 	flipOver(){
@@ -150,11 +153,12 @@ class Card extends React.Component {
 	}
 	
 	render(){
+		let colour = "card_" + this.selectColour()
 		return (<div className="card_container" id={this.state.element + "container"}>
 			<div className="card" id={this.state.element + "detail"}>
 				<div className="card_front card_side card_hidden" id={this.state.element + "front"}>
 					<div className="card_click" onClick={this.handleClick}></div>
-					<CardIcon url={this.props.image} classes={this.state.colourClass}/>
+					<CardIcon url={this.props.image} classes={colour}/>
 				</div>
 				<div className="card-back card_side" id={this.state.element + "back"}>
 					<div className="card_click" onClick={this.handleClick}></div>
