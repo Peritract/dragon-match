@@ -198,13 +198,16 @@ class Card extends React.Component {
 		this.flipOver = this.flipOver.bind(this);
 		this.selectColour = this.selectColour.bind(this);
 		this.state = {
-			element: "card_" + this.props.index + "_",
-			colourClass: "card_" + this.selectColour()
+			element: "card_" + this.props.index + "_"
 		};
 	}
 
 	selectColour() {
-		return ["black", "red", "green", "blue", "purple"][this.props.value % 5];
+		if (this.props.matched) {
+			return "white";
+		} else {
+			return ["black", "red", "green", "blue", "purple"][this.props.value % 5];
+		}
 	}
 
 	flipOver() {
@@ -221,6 +224,7 @@ class Card extends React.Component {
 	}
 
 	render() {
+		let colour = "card_" + this.selectColour();
 		return React.createElement(
 			"div",
 			{ className: "card_container", id: this.state.element + "container" },
@@ -231,7 +235,7 @@ class Card extends React.Component {
 					"div",
 					{ className: "card_front card_side card_hidden", id: this.state.element + "front" },
 					React.createElement("div", { className: "card_click", onClick: this.handleClick }),
-					React.createElement(CardIcon, { url: this.props.image, classes: this.state.colourClass })
+					React.createElement(CardIcon, { url: this.props.image, classes: colour })
 				),
 				React.createElement(
 					"div",
