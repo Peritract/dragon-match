@@ -312,7 +312,7 @@ class DragonMatch extends React.Component {
 				this.state.deck[this.state.lastCard[0]].flipped = true;
 				this.state.deck[index].flipped = true;
 				this.setState({ lastCard: null, cardsShown: 0 });
-				this.endCheck();
+				setTimeout(this.endCheck(), 1000);
 			} else {
 				this.state.deck[this.state.lastCard[0]].flipped = false;
 				this.state.deck[index].flipped = false;
