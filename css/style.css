@@ -38,7 +38,7 @@ body {
 	grid-template-columns: repeat(var(--grid-columns), 68px);
 	align-content: center;
 	justify-content: center;
-	background: var(--background);
+	background: var(--background) url("../assets/other/silver_scales.png");
 	padding: 3%;
 	width: 100%;
 	border: 4px solid var(--border);
@@ -135,7 +135,7 @@ body {
 	margin: 1%;
 	text-align: center;
 	width: 97%;
-	background: var(--background);
+	background: var(--background) url("../assets/other/silver_scales.png");
 	border-radius: 10%;
 	margin: 1%;
 }
@@ -159,7 +159,7 @@ body {
 }
 
 .button:hover {
-	color: var(--background);
+	color: var(--background) url("../assets/other/silver_scales.png");
 	background: var(--dark);
 	box-shadow: 0.1rem 0.1rem 0.1rem 0.2rem rgba(0, 0, 0, 0.5);
 	border: 4px solid var(--background);
