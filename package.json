@@ -18,7 +18,7 @@
   },
   "homepage": "https://github.com/Peritract/dragon-match#readme",
   "devDependencies": {
-    "babel-cli": "^6.26.0",
-    "babel-preset-react": "^6.24.1"
+    "@babel/cli": "latest",
+    "@babel/preset-react": "latest"
   }
 }
