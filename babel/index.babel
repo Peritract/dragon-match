@@ -3,7 +3,7 @@ function CardStruct(value){
 	this.value = value;
 	this.flipped = false;
 	this.matched = false;
-	this.image = "./assets/dragons-svg/dragon-" + value % 30 + ".svg";
+	this.image = "../assets/images/dragons-svg/dragon-" + value % 30 + ".svg";
 }
 
 class CardIcon extends React.Component {
@@ -165,7 +165,7 @@ class Card extends React.Component {
 				</div>
 				<div className="card-back card_side" id={this.state.element + "back"}>
 					<div className="card_click" onClick={this.handleClick}></div>
-					<CardIcon url="./assets/other-svg/viking-ship.svg" />
+					<CardIcon url="../assets/images/other-svg/viking-ship.svg" />
 				</div>
 			</div>
 		</div>);
@@ -305,6 +305,11 @@ class DragonMatch extends React.Component {
 	
 	render(){
 		this.setupGrid()
+
+		if (this.state.splashVisible){
+			return (<Splash win={this.state.win} visible={this.state.splashVisible} time={this.state.time} deck={this.state.deck.length} reset={this.reset} gamesWon={this.state.gamesWon} gamesLost={this.state.gamesLost}/>)
+		}
+
 		if (this.state.clear){
 			this.setState({clear: false})
 			return (<div className="game">
@@ -323,15 +328,8 @@ class DragonMatch extends React.Component {
 				<div className="ui_container">
 				<Reset reset={this.reset}/>
 				<Timer time={this.state.time} tick={this.tick} />
-				<div className="ui_element">
-				<p>
-				Made by <a href="https://peritract.github.io" target="blank">Peritract</a><br/>
-		Icons made by <a href="https://www.flaticon.com/authors/freepik">Freepik</a> from <a href="https://www.flaticon.com">FlatIcon</a>
-		</p>
 				</div>
-				</div>
-				<Splash win={this.state.win} visible={this.state.splashVisible} time={this.state.time} deck={this.state.deck.length} reset={this.reset} gamesWon={this.state.gamesWon} gamesLost={this.state.gamesLost}/>
-					</div>)
+				</div>)
 	}
 }
 
