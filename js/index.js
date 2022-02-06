@@ -396,6 +396,20 @@ class DragonMatch extends React.Component {
   render() {
     this.setupGrid();
 
+    // Show the splash screen on victory/defeat
+    if (this.state.splashVisible){
+      return /*#__PURE__*/React.createElement(Splash, {
+        win: this.state.win,
+        visible: this.state.splashVisible,
+        time: this.state.time,
+        deck: this.state.deck.length,
+        reset: this.reset,
+        gamesWon: this.state.gamesWon,
+        gamesLost: this.state.gamesLost
+      })
+    }
+
+    // Clear the game if necessary
     if (this.state.clear) {
       this.setState({
         clear: false
@@ -410,6 +424,7 @@ class DragonMatch extends React.Component {
       }));
     }
 
+    // Return the game board
     return /*#__PURE__*/React.createElement("div", {
       className: "game"
     }, /*#__PURE__*/React.createElement("div", {
@@ -427,15 +442,7 @@ class DragonMatch extends React.Component {
     }), /*#__PURE__*/React.createElement(Timer, {
       time: this.state.time,
       tick: this.tick
-    })), /*#__PURE__*/React.createElement(Splash, {
-      win: this.state.win,
-      visible: this.state.splashVisible,
-      time: this.state.time,
-      deck: this.state.deck.length,
-      reset: this.reset,
-      gamesWon: this.state.gamesWon,
-      gamesLost: this.state.gamesLost
-    }));
+    })));
   }
 
 }

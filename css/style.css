@@ -25,11 +25,16 @@ body {
 	--card-face: #f0e6bd;
 	--background: #f1f1f2;
 	--border: #093837;
-	--grid-rows: 1;
-	--grid-columns: 1;
 	padding: 0;
 	margin: 0;
 	background: var(--dark);
+}
+
+.game {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	height: 100vh;
 }
 
 .card_table {
@@ -45,6 +50,7 @@ body {
 	border: 4px solid var(--border);
 	margin: 1%;
 	border-radius: 10%;
+	flex-grow: 1;
 }
 
 .card_container {
@@ -129,6 +135,7 @@ body {
 .ui_container {
 	display: flex;
 	margin: 1%;
+	flex-shrink: 1;
 }
 
 .ui_element {
