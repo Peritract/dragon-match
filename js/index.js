@@ -427,16 +427,7 @@ class DragonMatch extends React.Component {
     }), /*#__PURE__*/React.createElement(Timer, {
       time: this.state.time,
       tick: this.tick
-    }), /*#__PURE__*/React.createElement("div", {
-      className: "ui_element"
-    }, /*#__PURE__*/React.createElement("p", null, "Made by ", /*#__PURE__*/React.createElement("a", {
-      href: "https://peritract.github.io",
-      target: "blank"
-    }, "Peritract"), /*#__PURE__*/React.createElement("br", null), "Icons made by ", /*#__PURE__*/React.createElement("a", {
-      href: "https://www.flaticon.com/authors/freepik"
-    }, "Freepik"), " from ", /*#__PURE__*/React.createElement("a", {
-      href: "https://www.flaticon.com"
-    }, "FlatIcon")))), /*#__PURE__*/React.createElement(Splash, {
+    })), /*#__PURE__*/React.createElement(Splash, {
       win: this.state.win,
       visible: this.state.splashVisible,
       time: this.state.time,
