@@ -15,7 +15,6 @@
 }
 
 body {
-	overflow: hidden;
 	font-size: 2em;
 	letter-spacing: 0.2em;
 	font-family: "Runy Tunes Revisited NF", serif;
@@ -28,25 +27,59 @@ body {
 	padding: 0;
 	margin: 0;
 	background: var(--dark);
+	max-height: 100vh;
+	overflow:hidden;
+}
+
+root {
+	height: 100%;
 }
 
 .game {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
-	height: 100vh;
-	max-height: 100vh;
+	height: 100%;
 }
 
 .game :nth-child(2) {
 	flex-grow: 1;
 }
 
+.ui_container {
+	display: flex;
+	margin: 1%;
+}
+
+.ui_element {
+	border: 4px solid var(--border);
+	margin: 1%;
+	text-align: center;
+	width: 97%;
+	background: var(--background) url("../images/other/silver_scales.png");
+	border-radius: 10%;
+	margin: 1%;
+}
+
+.splash_container {
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	display: flex;
+	justify-content: space-evenly;
+	align-content: center;
+	flex-direction: column;
+	background: var(--dark);
+	padding: 1%;
+}
+
 .card_table {
 	display: grid;
 	grid-gap: 1rem;
-	grid-template-rows: repeat(var(--grid-rows), 68px);
-	grid-template-columns: repeat(var(--grid-columns), 68px);
+	grid-template-rows: repeat(var(--grid-rows), 3.5rem);
+	grid-template-columns: repeat(var(--grid-columns), 3.5rem);
 	align-content: center;
 	justify-content: center;
 	background: var(--background) url("../images/other/silver_scales.png");
@@ -55,19 +88,18 @@ body {
 	border: 4px solid var(--border);
 	margin: 1%;
 	border-radius: 10%;
-	flex-grow: 1;
 }
 
 .card_container {
-	width: 68px;
-	height: 68px;
+	width: 100%;
+	height: 100%;
 	perspective: 1000px;
 	transform-style: preserve-3d;
 }
 
 .card {
-	width: 68px;
-	height: 68px;
+	width: 100%;
+	height: 100%;
 	transition: 0.5s;
 	position: relative;
 	transform-style: preserve-3d;
@@ -75,8 +107,8 @@ body {
 
 .card_side {
 	border-radius: 10%;
-	width: 68px;
-	height: 68px;
+	width: 100%;
+	height: 100%;
 	text-align: center;
 	padding: 7px 0px 0px 0px;
 	box-shadow: 0.1rem 0.1rem 0.1rem 0.2rem rgba(0, 0, 0, 0.5);
@@ -100,8 +132,8 @@ body {
 }
 
 .image {
-	width: 64px;
-	height: 64px;
+	width: 90%;
+	height: 90%;
 	margin: auto;
 }
 
@@ -135,36 +167,6 @@ body {
 
 .card_white {
 	fill: white;
-}
-
-.ui_container {
-	display: flex;
-	margin: 1%;
-	flex-shrink: 1;
-}
-
-.ui_element {
-	border: 4px solid var(--border);
-	margin: 1%;
-	text-align: center;
-	width: 97%;
-	background: var(--background) url("../images/other/silver_scales.png");
-	border-radius: 10%;
-	margin: 1%;
-}
-
-.splash_container {
-	position: fixed;
-	top: 0;
-	bottom: 0;
-	left: 0;
-	right: 0;
-	display: flex;
-	justify-content: space-evenly;
-	align-content: center;
-	flex-direction: column;
-	background: var(--dark);
-	padding: 1%;
 }
 
 .button{

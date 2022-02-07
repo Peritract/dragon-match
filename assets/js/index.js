@@ -229,7 +229,7 @@ class DragonMatch extends React.Component {
     this.reset = this.reset.bind(this);
     this.setupGrid = this.setupGrid.bind(this);
     this.state = {
-      deck: this.shuffle(this.newDeck(4)),
+      deck: this.shuffle(this.newDeck(32)),
       cardsShown: 0,
       lastCard: null,
       time: 150,
