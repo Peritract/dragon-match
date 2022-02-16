@@ -15,8 +15,8 @@
 }
 
 body {
-	font-size: 2em;
-	letter-spacing: 0.2em;
+	font-size: 2rem;
+	letter-spacing: 0.2rem;
 	font-family: "Runy Tunes Revisited NF", serif;
 	--card-back: #a2c7bf;
 	--card-matched: #98b4b2;
@@ -48,17 +48,16 @@ root {
 
 .ui_container {
 	display: flex;
-	margin: 1%;
+	margin: 0.2rem;
 }
 
 .ui_element {
 	border: 4px solid var(--border);
-	margin: 1%;
+	margin: 0.2rem;
 	text-align: center;
 	width: 97%;
 	background: var(--background) url("../images/other/silver_scales.png");
 	border-radius: 10%;
-	margin: 1%;
 }
 
 .splash_container {
@@ -86,7 +85,7 @@ root {
 	padding: 3%;
 	width: 100%;
 	border: 4px solid var(--border);
-	margin: 1%;
+	margin: 0.2rem;
 	border-radius: 10%;
 }
 
@@ -181,7 +180,7 @@ root {
 }
 
 p {
-	font-size: 0.75em;
+	font-size: 0.75rem;
 }
 
 .warning {
